@@ -9,7 +9,7 @@ import SmallCard from '../components/SmallCard'
 
 const Home: NextPage = ({ exploreData, cardsData }: any) => {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>AirBnb remake by JHerrera</title>
         <link rel="icon" href="/favicon.ico" />
@@ -64,9 +64,11 @@ export async function getStaticProps(): Promise<{
     cardsData?: any;
   };
 }> {
-  const exploreData = await fetch('https://links.papareact.com/pyp').then((res) => res.json());
+  const exploreRes = await fetch('https://links.papareact.com/pyp');
+  const exploreData = await exploreRes.json();
 
-  const cardsData = await fetch('https://links.papareact.com/zp1').then((res => res.json()));
+  const cardsRes = await fetch('https://links.papareact.com/zp1');
+  const cardsData = await cardsRes.json();
 
   return {
     props: {
