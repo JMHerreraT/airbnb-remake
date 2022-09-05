@@ -16,7 +16,7 @@ const Footer = () => {
             <h5 className="font-bold">COMMUNITY</h5>
             <p>Accessibility</p>
             <p>This is not a real site</p>
-            <p>It's an awesome clone</p>
+            <p>Its an awesome clone</p>
             <p>Referrals accepted</p>
             <p>JHerrera</p>
         </div>

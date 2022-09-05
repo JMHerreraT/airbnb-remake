@@ -10,6 +10,7 @@ const LargeCard = ({ img, title, description, buttonText }: any) => {
                 layout="fill"
                 objectFit="cover"
                 className="rounded-2xl"
+                alt='large-card'
             />
         </div>
 
