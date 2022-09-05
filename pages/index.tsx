@@ -9,7 +9,7 @@ import SmallCard from '../components/SmallCard'
 
 const Home: NextPage = ({ exploreData, cardsData }: any) => {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>AirBnb remake by JHerrera</title>
         <link rel="icon" href="/favicon.ico" />
