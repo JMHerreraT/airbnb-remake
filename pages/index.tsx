@@ -58,22 +58,24 @@ const Home: NextPage = ({ exploreData, cardsData }: any) => {
 
 export default Home
 
-export async function getStaticProps(): Promise<{
-  props: {
-    exploreData: any;
-    cardsData?: any;
-  };
-}> {
-  const exploreRes = await fetch('https://links.papareact.com/pyp');
-  const exploreData = await exploreRes.json();
+export async function getStaticProps() {
+  // const exploreData = await fetch('https://links.papareact.com/pyp').then(
+  //   (res) => res.json()
+  // );
 
-  const cardsRes = await fetch('https://links.papareact.com/zp1');
-  const cardsData = await cardsRes.json();
+  // const cardsData = await fetch('https://links.papareact.com/zp1').then(
+  //   (res) => res.json()
+  // );
 
+  // return {
+  //   props: {
+  //     exploreData,
+  //     cardsData
+  //   }
+  // }
   return {
     props: {
-      exploreData,
-      cardsData
+      
     }
   }
 }
