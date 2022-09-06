@@ -4,8 +4,13 @@ import Image from 'next/image'
 import { SearchIcon, GlobeAltIcon, MenuIcon, UsersIcon, UserCircleIcon } from '@heroicons/react/solid'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useRouter } from 'next/router';
 
-const Header = () => {
+export interface IHeaderProps {
+    placeHolder: string;
+}
+
+const Header = ({ placeHolder }: IHeaderProps) => {
 
     const [searchInput, setSearchInput] = useState('');
     const [date, setDate] = useState(new Date());
@@ -13,15 +18,27 @@ const Header = () => {
     const handleSelect = (date: Date) => {
         setDate(date);
     };
+    const router = useRouter();
 
     const resetInput = () => {
         setSearchInput('');
     };
 
+    const search = () => {
+        router.push({
+            pathname: '/search',
+            query: {
+                location: searchInput,
+                date: date.toISOString(),
+                guests: noOfPeople
+            }
+        });
+    };
+
     return (
         <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
             {/* Left */}
-            <div className="relative flex items-center h-10 cursor-pointer my-auto">
+            <div onClick={() => router.push('/')} className="relative flex items-center h-10 cursor-pointer my-auto">
                 <Image
                     src={`https://links.papareact.com/qd3`}
                     layout={`fill`}
@@ -33,7 +50,7 @@ const Header = () => {
 
             {/* Middle - Search */}
             <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-sm ">
-                <input className="flex-grow pl-5 bg-transparent outline-none text-gray-600 placeholder-gray-400" type="text" placeholder='Start your search' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                <input className="flex-grow pl-5 bg-transparent outline-none text-gray-600 placeholder-gray-400" type="text" placeholder={placeHolder ? placeHolder : `Start your search`} value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                 <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
             </div>
 
@@ -59,7 +76,7 @@ const Header = () => {
                     </div>
                     <div className="flex">
                         <button className="flex-grow text-sm text-white bg-gray-400 px-4 py-2 rounded-lg mt-5 mr-3 cursor-pointer hover:scale-105 transform transition duration-300 ease-out" onClick={resetInput}>Cancel</button>
-                        <button className="flex-grow text-sm text-white bg-red-400 px-4 py-2 rounded-lg mt-5 cursor-pointer hover:scale-105 transform transition duration-300 ease-out">Search</button>
+                        <button onClick={search} className="flex-grow text-sm text-white bg-red-400 px-4 py-2 rounded-lg mt-5 cursor-pointer hover:scale-105 transform transition duration-300 ease-out">Search</button>
                     </div>
                 </div>
             }
