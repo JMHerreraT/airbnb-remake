@@ -70,8 +70,6 @@ const Search = ({ searchResults }: any) => {
     }
   ];
 
-  console.log('searchResults -> ', searchResults);
-
   return (
     <div className="h-screen">
       <Header placeHolder={`${location} | ${formattedDate} | ${guests} guests`} />
