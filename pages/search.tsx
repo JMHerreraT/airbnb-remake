@@ -8,9 +8,10 @@ const Search = ({ searchResults }: any) => {
 
   const router = useRouter();
 
-  const { location, date, guests } = router.query;
+  const { location, date  , guests } = router.query;
+  const newDate = new Date(date as any);
 
-  const formattedDate = format(new Date(date), "dd MMMM yy");
+  const formattedDate = format(newDate, "dd MMMM yy");
 
   searchResults = [
     {
