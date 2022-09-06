@@ -7,7 +7,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useRouter } from 'next/router';
 
 export interface IHeaderProps {
-    placeHolder: string;
+    placeHolder?: string;
 }
 
 const Header = ({ placeHolder }: IHeaderProps) => {
